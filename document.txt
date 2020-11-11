@@ -40,6 +40,8 @@ DIRETIVAS {
 
     ng-model-options="{debounce: tempo}" -> utilizamos essa diretiva para determinar um tempo para que execute a ação de filtro.
 
+  ng-view -> utilizamos para passar nossos componentes para o html.
+
 
 
   *** 
