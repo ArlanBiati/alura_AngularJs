@@ -1,0 +1,98 @@
+INICIANDO OS ESTUDOS EM ANGULAR.JS
+CONCEITOS.
+
+MÓDULOS {
+
+  Bloco Fundamental para funcionamento do Angular é o Módulo.
+  Módulo são como peças que quando combinadas formam uma aplicação
+
+  Para iniciarmos é necessario um módulo principal que geralmente recebe o nome de MAIN.JS
+
+  Como criar um módulo?
+
+    angular.module('nome_modulo', [dependencias])
+
+    é desta forma mostrada acima que criamos um módulo.
+
+    Dentro dele passamos como primeiro parâmetro o nome e na segunda posição um array. Este array contera as dependencias que o modulo usara futuramente.
+
+  Como dizer ao angular, qual é o módulo que deve ser carregado logo de cara?
+
+    Dentro do nosso arquivo .HTML devemos passar uma diretiva -> NG-APP="nome_modulo"
+}
+  
+TEMPLATES {
+
+  Template pode ser considerado o código HTML com as `Angular Expressions` (campos de dado dinâmico)
+}
+
+DIRETIVAS {
+
+  Diretivas são atributos do Angular que conectão ele com a aplicação, podendo como exemplo, definir qual é o módulo principal a ser apresentado(NG-APP), qual o controller que está sendo utilziado naquele elemento do DOM(NG-CONTROLLER) e alguns mais.
+
+  ng-app -> indica o módulo principal (ng-app="nome_modulo")
+
+  ng-controller -> indica o controller utilizado naquele elemento DOM (ng-controller="nome_controller")
+
+  ng-repeat -> utilizamos para interar os dados sobre um array e apresentar em tela (FOR in) (ng-repeat="photo in photos)
+
+  ng-model -> utilizamos ela para pegar um valor inputado pelo usuario e virse-versa (ler e enviar) - [two-way data binding]
+
+    ng-model-options="{debounce: tempo}" -> utilizamos essa diretiva para determinar um tempo para que execute a ação de filtro.
+
+
+
+  *** 
+    Dentro das diretivas, descobrimos que é possivel incluirmos um filtro.
+      Como por exemplo:
+      
+      | filter: filter ()
+
+      O sinal de | (pipe) significa que vamos utilizar um filtro e após ele passamos qual é o filtro que sera aplicado e o valor que recebera.
+}
+
+NOSSAS PRÓPRIAS DIRETIVAS {
+
+  Ao criar nossas próprias diretivas, conseguimos criar componentes separados e que iram facilitar muito na manutenção, na função de cada componentes, estilização etc.
+
+  Quando criamos nossas diretivas, devemos retornar um DDO(Directive Definition Object) que é nossa diretiva configurada corretamente.
+  
+  Exemplo de criação de uma diretiva {
+
+    angular.module("minhasDiretivas", []).directive("meuPainel", function(){
+
+      var ddo = {};
+
+      ddo.restrict = "AE"; /* Tipo que pode ser usado: Atribute ou Element*/
+
+      ddo.scope = {
+          titulo : "@"
+      }
+
+      ddo.transclude = true; /* Configura para manter elementos filhos*/
+
+      ddo.templateUrl = "js/directives/meu-painel.html";  /* Caminho da view*/
+
+      return ddo;
+    })
+
+    Lembrando que quando formos incluir dentro do html, o nome da diretiva deve ser separado por ífen e não CamelCase
+  }
+}
+
+INJEÇÃO DE DEPENDENCIAS {
+
+  Pode ser considerado o garçom do angular. Tudo o que for preciso para montar a view o angular da um gritinho  e as injeções de dependencias entrão em ação.
+
+  "HEI, PRECISO DE UM SCOPE AQUI"
+
+  $scope -> utilizamos para enviar dados para nossas views
+  $http --> este é o serviço do angular responsavel por realizar requisições AJAX
+}
+
+
+
+
+
+
+  

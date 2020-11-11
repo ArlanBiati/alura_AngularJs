@@ -7,15 +7,36 @@
   <title>Alurapic</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="css/effects.css">
   <script src="js/lib/angular.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/lib/angular-animate.min.js"></script>
+  <script src="js/directives/minhas-diretivas.js"></script>
   <script src="js/controllers/photos-controller.js"></script>
 </head>
 
 <body ng-controller="PhotosController">
   <div class="container">
-    <h1 class="text-center">Alurapic</h1>
-    <img class="img-responsive center-block" src="{{ photo.url }}" alt="{{ photo.title }}">
+
+    <div class="jumbotron">
+      <h1 class="text-center">Alurapic</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <form action="">
+          <input ng-model="filter" ng-model-options="{debounce: 1000}" type="text" class="form-control"
+            placeholder="Filtrar">
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <meu-painel class="col-md-2 painel-animado" ng-repeat="photo in photos | filter: filter"
+        title="{{ photo.title }}">
+        <img class="img-responsive center-block" src="{{ photo.url }}" alt="{{ photo.title }}">
+      </meu-painel>
+    </div>
   </div> <!-- fim container -->
 </body>
 
