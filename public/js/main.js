@@ -1,7 +1,8 @@
 angular.module('alurapic', [
   'minhasDiretivas',
   'ngAnimate',
-  'ngRoute'
+  'ngRoute',
+  'meusServicos'
 ]).config(function ($routeProvider, $locationProvider) {
 
   // ativamos o módulo do HTML5 para que não apareça a # na nossa url

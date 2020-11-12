@@ -15,6 +15,7 @@ angular.module('minhasDiretivas', [])
 
     return ddo
   })
+
   .directive('minhaFoto', function () {
     let ddo = {}
 
@@ -26,6 +27,21 @@ angular.module('minhasDiretivas', [])
     }
 
     ddo.templateUrl = 'js/directives/minha-foto.html'
+
+    return ddo
+  })
+
+  .directive('meuBotaoRemover', function () {
+    let ddo = {}
+
+    ddo.restrict = "E"
+
+    ddo.scope = {
+      acao: '&',
+      nome: '@'
+    }
+
+    ddo.template = '<button ng-click="acao(foto)" class="btn btn-danger btn-block">{{nome}}</button>'
 
     return ddo
   })

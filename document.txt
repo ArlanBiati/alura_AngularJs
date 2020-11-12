@@ -79,6 +79,8 @@ NOSSAS PRÓPRIAS DIRETIVAS {
     })
 
     Lembrando que quando formos incluir dentro do html, o nome da diretiva deve ser separado por ífen e não CamelCase
+
+    *** OBS -> Dentro de ddo passamos o scope da variavel. Quando utilizamos "@" significa que queremos um valor em string e quando utilizamos "&" significa que queremos o valor da expressão
   }
 }
 
@@ -90,6 +92,10 @@ INJEÇÃO DE DEPENDENCIAS {
 
   $scope -> utilizamos para enviar dados para nossas views
   $http --> este é o serviço do angular responsavel por realizar requisições AJAX
+}
+
+SERVICES {
+  São códigos que queremos guardar para poder ser compartilhados entre controllers.
 }
 
 
