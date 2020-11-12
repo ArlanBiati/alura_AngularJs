@@ -80,7 +80,10 @@ NOSSAS PRÓPRIAS DIRETIVAS {
 
     Lembrando que quando formos incluir dentro do html, o nome da diretiva deve ser separado por ífen e não CamelCase
 
-    *** OBS -> Dentro de ddo passamos o scope da variavel. Quando utilizamos "@" significa que queremos um valor em string e quando utilizamos "&" significa que queremos o valor da expressão
+    *** OBS -> Dentro de ddo passamos o scope da variavel. Quando utilizamos:
+      "@" significa que queremos um valor em string.
+      "&" significa que queremos o valor da expressão.
+      "=" significa uma comunicação bidirecional, entre o controller e a diretiva para que ambos saibam o que esta acontecendo.
   }
 }
 

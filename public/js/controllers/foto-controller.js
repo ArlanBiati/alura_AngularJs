@@ -1,4 +1,4 @@
-angular.module('alurapic').controller('FotoController', function ($scope, recursoFoto, $routeParams) {
+angular.module('alurapic').controller('FotoController', function ($scope, recursoFoto, cadastroDeFotos, $routeParams) {
 
   $scope.foto = {}
   $scope.mensagem = ''
@@ -6,7 +6,7 @@ angular.module('alurapic').controller('FotoController', function ($scope, recurs
   if ($routeParams.fotoId) {
     recursoFoto.get({ fotoId: $routeParams.fotoId }, function (foto) {
 
-      scope.foto = foto
+      $scope.foto = foto
 
     }, function (erro) {
 
@@ -19,32 +19,47 @@ angular.module('alurapic').controller('FotoController', function ($scope, recurs
   $scope.submeter = function () {
 
     if ($scope.formulario.$valid) {
-      if ($scope.foto._id) {
 
-        recursoFoto.update({ fotoId: $scope.foto._id }, $scope.foto, function () {
+      cadastroDeFotos.cadastrar($scope.foto)
+        .then(function (dados) {
+          $scope.mensagem = dados.mensagem
 
-          $scope.mensagem = 'Foto atualizada com sucesso.'
-
-        }, function (erro) {
-
-          $scope.mensagem = 'Não foi possivel atualizar a foto.'
-          console.log(erro)
-
+          if (dados.inclusao) {
+            $scope.dados = {}
+          }
         })
-      } else {
-
-        recursoFoto.save($scope.foto, function () {
-
-          $scope.foto = {}
-          $scope.mensagem = 'Foto cadastrada com sucesso.'
-
-        }, function (erro) {
-
-          $scope.mensagem = 'Não foi possivel cadastrar a foto.'
-          console.log(erro)
-
+        .catch(function (dados) {
+          $scope.mensagem = dados.mensagem
         })
-      }
+
+      // if ($scope.foto._id) {
+
+      //   recursoFoto.update({ fotoId: $scope.foto._id }, $scope.foto, function () {
+
+      //     $scope.mensagem = 'Foto atualizada com sucesso.'
+
+      //   }, function (erro) {
+
+      //     $scope.mensagem = 'Não foi possivel atualizar a foto.'
+      //     console.log(erro)
+
+      //   })
+      // } else {
+
+      //   recursoFoto.save($scope.foto, function () {
+
+      //     $scope.foto = {}
+      //     $scope.mensagem = 'Foto cadastrada com sucesso.'
+
+      //   }, function (erro) {
+
+      //     $scope.mensagem = 'Não foi possivel cadastrar a foto.'
+      //     console.log(erro)
+
+      //   })
+      // }
+
+
     }
   }
 })
